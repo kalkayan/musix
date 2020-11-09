@@ -1,0 +1,11 @@
+{% extends 'layouts/main.html' %}
+
+{% block title %}Music streaming{% endblock %}
+
+{% block content %}
+<section style="height:100vh">
+    <div class="container">
+        <a href="{% url 'oauth_github_authorize' %}">login</a>
+    </div>
+</section>
+{% endblock %}
