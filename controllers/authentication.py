@@ -1,6 +1,8 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from authlib.integrations.django_client import OAuth
+from django.contrib.auth import get_user_model
+from django.contrib.auth import login, authenticate
 
 gh = settings.AUTHLIB_OAUTH_CLIENTS['github']
 oauth = OAuth()
@@ -15,14 +17,23 @@ oauth.register(
     client_kwargs=gh['client_kwargs'],
 )
 
+
 def oauth_github_authorize(request):
     github = oauth.create_client('github')
     redirect = request.build_absolute_uri('/oauth/github/callback')
-    print(redirect)
     return github.authorize_redirect(request, redirect)
+
 
 def oauth_github_callback(request):
     token = oauth.github.authorize_access_token(request)
     resp = oauth.github.get('user', token=token)
     profile = resp.json()
-    return render(request, 'pages/welcome.html')
+
+    u, created = get_user_model().objects.get_or_create(
+        username=profile['login'],
+        email=profile['email'],
+        # first_name=profile['name'].split(' ')[0],
+    )
+
+    login(request, user=u, backend='django.contrib.auth.backends.ModelBackend')
+    return redirect('/app')

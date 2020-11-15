@@ -1,11 +1,35 @@
 {% extends 'layouts/main.html' %}
-
+{% load static %}
 {% block title %}Music streaming{% endblock %}
 
 {% block content %}
-<section style="height:100vh">
+<section class="text-center pt-5">
     <div class="container">
-        <a href="{% url 'oauth_github_authorize' %}">login</a>
+        <div class="row">
+            <div class="col-md-8">
+                <img src="{% static 'img/musix-landing.png' %}" alt="" srcset="">
+            </div>
+            <div class="col-md-4 d-flex" style="align-items: center;">
+                <div>
+                    <!-- <div class="typed-headline">
+                        <span class="h2 inline-block">Stream</span>
+                        <span class="h2 inline-block typed-text typed-text--cursor color--primary"
+                            data-typed-strings="anywhere., free., forever."></span>
+                    </div> -->
+                    <img width="70" src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="">
+                    <p class="lead">
+                        Access the songs free via github login.
+                    </p>
+                    <a class="btn btn-dark type--uppercase inner-link" href="{% url 'oauth_github_authorize' %}">
+                        <span class="btn__text text-white">
+                            Login with github
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--end of row-->
     </div>
+    <!--end of container-->
 </section>
 {% endblock %}

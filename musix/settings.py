@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -37,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'musix'
 ]
 
 MIDDLEWARE = [
@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'musix',
         'CLIENT': {
-           'host': 'mongodb+srv://hades:sonoftitan@cluster0.zraaj.mongodb.net',
+            'host': 'mongodb+srv://hades:sonoftitan@cluster0.zraaj.mongodb.net',
         },
     }
 }
@@ -121,9 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 
-# OAuth Vendors 
+# OAuth Vendors
 AUTHLIB_OAUTH_CLIENTS = {
     'github': {
         'client_id': 'af4b12cfc8bb9ed98a90',
@@ -135,3 +138,6 @@ AUTHLIB_OAUTH_CLIENTS = {
         'client_kwargs': {'scope': 'read:user'},
     },
 }
+
+AUTH_USER_MODEL = 'musix.User'
+LOGIN_URL = '/'

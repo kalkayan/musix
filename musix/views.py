@@ -1,5 +1,2 @@
-from django.shortcuts import render
-
-
-def welcome(request):
-    return render(request, 'pages/welcome.html')
+from controllers.pages import *
+from controllers.authentication import *

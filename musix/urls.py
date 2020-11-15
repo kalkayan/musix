@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from musix.views import *
-import controllers.authentication as auth
+from musix.views import *  # noqa
 
 urlpatterns = [
     path('', welcome, name='welcome'),
-    path('oauth/github/authorize', auth.oauth_github_authorize, name='oauth_github_authorize'),
-    path('oauth/github/callback', auth.oauth_github_callback, name='oauth_github_callback')
+    path('oauth/github/authorize', oauth_github_authorize,
+         name='oauth_github_authorize'),
+    path('oauth/github/callback', oauth_github_callback,
+         name='oauth_github_callback'),
+    path('app', dashboard, name='dashboard'),
 ]
