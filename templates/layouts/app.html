@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - Musix</title>
+    {% csrf_token %}
+    {% include 'includes/stylesheets.html' %}
+    {% block stylesheets %}{% endblock %}
+    {% block links %}{% endblock %}
+</head>
+
+<body style="visibility: hidden;" onload="document.body.style.visibility='visible';">
+    {% include 'includes/sidebar.html' %}
+    <div class="main-container">
+        <div class="nav-container">
+            {% include 'includes/navbar.html' %}
+        </div>
+        {% block content %} {% endblock %}
+    </div>
+    {% include 'includes/javascripts.html' %}
+</body>
+
+</html>

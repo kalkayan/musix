@@ -1,0 +1,56 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+{% block title %}Songs{% endblock %}
+
+{% block content %}
+
+<section class="pt-1 pb-1">
+    <div class="container pl-5 pr-5">
+        <h3 class="">Upload Songs</h3>
+    </div>
+</section>
+
+<section class="">
+    <div class="container pl-5 pr-5">
+        <div class="row">
+            <div class="col-md-6 col-lg-4 ">
+                <img alt="Image" id="prev" class="border--round box-shadow-wide"
+                    src="https://www.atlantawatershed.org/wp-content/uploads/2017/06/default-placeholder.png">
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <div class="">
+                    <h1>Ideal for freelance artists.</h1>
+                    <p class="lead">
+                        Start building a beautiful site for your startup
+                    </p>
+                    <hr class="short">
+                    <form action="{% url 'songs_create' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form">
+                            {{ form.as_p }}
+                            <div class="mt-4">
+                                <button type="submit" class="btn btn--secondary">Upload Song</button>
+                            </div>
+                            <div class="">
+                                <span class="type--fine-print">By uploading, you agree to the
+                                    <a href="#">Terms of Service</a>
+                                </span>
+                            </div>
+                        </div>
+                        <!--end row-->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+<script>
+    var cover = document.getElementById('id_cover')
+    var prev = document.getElementById('prev')
+    cover.addEventListener('input', function () {
+        prev.src = window.URL.createObjectURL(cover.files[0])
+    })
+</script>
+{% endblock %}

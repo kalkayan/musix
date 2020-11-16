@@ -1,0 +1,77 @@
+{% load static %}
+
+<div class="nav-container nav-container--sidebar">
+    <div class="nav-sidebar-column bg--light">
+        <div class="text-center text-block border--bottom">
+            <a href="">
+                <img alt="avatar" src="{% static 'img/musix-landing.png' %}" class="image--lg" />
+            </a>
+            <div class="text-center">
+                <div>
+                    <span class="type--fine-print type--fade">
+                        Copyright © 
+                        <span class="update-year"></span>
+                    </span>
+                </div>
+                <ul class="social-list list-inline list--hover ml-auto mt-3 mb-1 mr-auto">
+                    <li>
+                        <a class="text-dark" href="">
+                            <i class="socicon socicon-mail icon icon--xs"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-dark" href="">
+                            <i class="socicon socicon-twitter icon icon--xs"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-dark" href="">
+                            <i class="socicon socicon-facebook icon icon--xs"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-dark" href="">
+                            <i class="socicon socicon-instagram icon icon--xs"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- <div class="text-block">
+            <h4 class="mb-0">
+                <span data-tooltip="View or Edit your details."><a class="text-dark type--fade"
+                        href="">{{ request.user.username }}</a></span>
+            </h4>
+            <small>
+                <a href="" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+
+                <form id="logout-form" action="" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </small>
+        </div> -->
+        <div class="text-block">
+            <ul class="menu-vertical">
+                <li class="mb-0">
+                    <a class="text-dark" href="{% url 'dashboard' %}">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="mb-0">
+                    <a class="text-dark" href="{% url 'songs_index' %}">
+                        Songs
+                    </a>
+                </li>
+                <li class="mb-0">
+                    <a class="text-dark" href="{% url 'songs_index' %}">
+                        Your Library
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

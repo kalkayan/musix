@@ -1,0 +1,44 @@
+<nav class="bar bar--sm bar-2 hidden-xs bar--fixed" data-scroll-class="100px:pos-fixed">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-11 col-md-12 text-right text-left-xs text-left-sm">
+                <div class="bar__module">
+                    <ul class="menu-horizontal text-left">
+                        <li>
+                            <a class="text-dark type--fine-print type--fade" href="{% url 'songs_create' %}">Upload Song</a>
+                        </li>
+                        <!-- <li class="dropdown">
+                            <span class="dropdown__trigger">Portfolio</span>
+                            <div class="dropdown__container" style="left: -559.733px;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="dropdown__content col-lg-2 col-md-4" style="left: 559.733px;">
+                                            <ul class="menu-vertical">
+                                                <li class="dropdown">
+                                                    maish
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li> -->
+                        <li>
+                            <a href="" class="text-dark type--fine-print type--fade" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="" method="POST" style="display: none;">
+                                {% csrf_token %}
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <!--end module-->
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</nav>
+<!--end bar-->
