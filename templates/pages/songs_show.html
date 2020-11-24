@@ -4,48 +4,48 @@
 
 {% block links %}
 <link href="{% static 'css/player.css' %}" rel="stylesheet" type="text/css">
+
 {% endblock %}
 
 {% block content %}
-<section class="pt-1">
-    <div class="container pl-5 pr-5">
-        <h3 class="">{{ song.title }}</h3>
+<section class=" ">
+    <div class="container">
+        <div class="" style="position: relative; height: 100vh;">
+            <div class="player">
+                <div class="cover">
+                    <img src="/media/{{song.cover}}" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">{{song.title}}</div>
+                    <div class="singer">{{song.artist}}</div>
+                </div>
+                <div class="volume-box">
+                    <span class="volume-down"><i class="material-icons">remove</i></span>
+                    <input type="range" class="volume-range" step="1" value="80" min="0" max="100"
+                        oninput="music.volume = this.value/100">
+                    <span class="volume-up"><i class="material-icons">add</i></span>
+                </div>
+                <div class="btn-box">
+                    <i class="material-icons repeat" onclick="handleRepeat()">repeat</i>
+                    <i class="material-icons favorite active" onclick="handleFavorite()">favorite</i>
+                    <i class="material-icons volume" onclick="handleVolume()">volume_up</i>
+                </div>
+                <div class="music-box">
+                    <input type="range" step="1" class="seekbar" value="0" min="0" max="100" oninput="handleSeekBar()">
+
+                    <audio class="music-element">
+                        <source src="/media/{{song.audio}}" type="audio/mp3">
+                    </audio>
+                    <span class="current-time">0:0</span><span class="duration">0:0</span>
+                    <span class="play" onclick="handlePlay()">
+                        <i class="material-icons">play_arrow</i>
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
     <!--end of container-->
-    <div class="player">
-        <div class="cover">
-            <img src="/media/{{song.cover}}" alt="">
-        </div>
-        <div class="info">
-            <div class="title">Autumn</div>
-            <div class="singer">Instrumental Music</div>
-        </div>
-        <div class="volume-box">
-            <span class="volume-down"><i class="material-icons">remove</i></span>
-            <input type="range" class="volume-range" step="1" value="80" min="0" max="100"
-                oninput="music.volume = this.value/100">
-            <span class="volume-up"><i class="material-icons">add</i></span>
-        </div>
-        <div class="btn-box">
-            <i class="material-icons repeat" onclick="handleRepeat()">repeat</i>
-            <i class="material-icons favorite active" onclick="handleFavorite()">favorite</i>
-            <i class="material-icons volume" onclick="handleVolume()">volume_up</i>
-        </div>
-        <div class="music-box">
-            <input type="range" step="1" class="seekbar" value="0" min="0" max="100" oninput="handleSeekBar()">
-
-            <audio class="music-element">
-                <source src="/media/{{song.audio}}" type="audio/mp3">
-            </audio>
-            <span class="current-time">0:0</span><span class="duration">0:0</span>
-            <span class="play" onclick="handlePlay()">
-                <i class="material-icons">play_arrow</i>
-            </span>
-        </div>
-    </div>
 </section>
-
-
 <script>
     // player
     var music = document.querySelector('.music-element')

@@ -1,4 +1,3 @@
-
 html,
 body {
     padding: 0;
@@ -15,7 +14,7 @@ body {
 .player {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 30%;
     transform: translate(-50%, -50%);
     width: 330px;
     height: 530px;
@@ -73,7 +72,7 @@ body {
     left: 50%;
     top: 50px;
     transform: translateX(-50%);
-    box-shadow: 0 5px 20px 0 #d56c006d;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 .player .cover img {
     width: 100%;
