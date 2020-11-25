@@ -34,6 +34,11 @@ urlpatterns = [
             path('create', V.songs_create, name='songs_create'),
             path('play/<slug:song_id>', V.songs_show, name='songs_show')
         ])),
+        path('playlists/', include([
+            path('index', V.playlist_index, name='playlist_index'),
+            path('show/<slug:slug>', V.playlist_show, name='playlist_show'),
+            path('add/<slug:slug>/<slug:song>', V.playlist_song_toggle, name='playlist_song_toggle'),
+        ])),
     ])),
 ]
 

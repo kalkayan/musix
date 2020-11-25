@@ -1,2 +1,4 @@
 .vscode
 media
+.env
+**/*/__pycache__

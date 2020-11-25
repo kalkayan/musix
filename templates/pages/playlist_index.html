@@ -1,0 +1,41 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+{% block title %}Playlists{% endblock %}
+
+{% block content %}
+<section class="pt-1">
+    <div class="container pl-5 pr-5">
+        <h3 class="">Your Library!</h3>
+        <div class="masonry">
+            <div class="masonry__container row masonry--active" style="position: relative; height: 445.617px;">
+                {% for i in playlists %}
+                <div class="col-md-3 masonry__item" style="position: absolute; left: 0px; top: 0px;">
+                    <div class="card card-1 boxed boxed--sm boxed--border ">
+                        <div class="card__body p-0 m-0" style="border: none;">
+                            {% if i.title == 'liked Songs' %}
+                            <a href="{% url 'playlist_show' i.slug %}">
+                                <img src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png" alt="Image" class="border--round">
+                            </a>
+                            {% else %}
+                            <a href="{% url 'playlist_show' i.slug %}">
+                                <img src="/media/{{ i.cover }}" alt="Image" class="border--round">
+                            </a>
+                            {% endif %}
+                            <h4 class="mb-0"><a class="text-dark" href="/app/songs/playlists/{{ i.slug }}">{{i.title}}</a></h4>
+                            <p class="text-gray" style="line-height: 18px; font-size: 13px;">
+                                <!-- {{i.description}} -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!--end masonry__container + row -->
+        </div>
+        <!--end masonry-->
+    </div>
+    <!--end of container-->
+</section>
+
+
+{% endblock %}

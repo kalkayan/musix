@@ -21,7 +21,7 @@
                 <div class="">
                     <h1>Ideal for freelance artists.</h1>
                     <p class="lead">
-                        Start building a beautiful site for your startup
+                        Reach the world, without paying for your visa
                     </p>
                     <hr class="short">
                     <form action="{% url 'songs_create' %}" method="POST" enctype="multipart/form-data">
@@ -51,6 +51,12 @@
     var prev = document.getElementById('prev')
     cover.addEventListener('input', function () {
         prev.src = window.URL.createObjectURL(cover.files[0])
+    })
+
+
+    document.getElementById('id_audio').addEventListener('input', function () {
+        // validation for .mp3 files
+
     })
 </script>
 {% endblock %}

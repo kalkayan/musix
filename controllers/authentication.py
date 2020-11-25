@@ -1,7 +1,8 @@
 from django.conf import settings
+from controllers.playlist import init_user
 from django.shortcuts import render, redirect
-from authlib.integrations.django_client import OAuth
 from django.contrib.auth import get_user_model
+from authlib.integrations.django_client import OAuth
 from django.contrib.auth import login, authenticate
 
 gh = settings.AUTHLIB_OAUTH_CLIENTS['github']
@@ -34,6 +35,8 @@ def oauth_github_callback(request):
         email=profile['email'],
         # first_name=profile['name'].split(' ')[0],
     )
+    if created:
+        init_user(u)
 
     login(request, user=u, backend='django.contrib.auth.backends.ModelBackend')
     return redirect('/app')

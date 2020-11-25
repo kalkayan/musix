@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'musix',
         'CLIENT': {
-            'host': 'mongodb+srv://hades:sonoftitan@cluster0.zraaj.mongodb.net',
+            'host': os.environ.get('MONGO_STRING'),
         },
     }
 }

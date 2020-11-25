@@ -57,9 +57,11 @@ class Song(models.Model):
     description = models.CharField(max_length=255)
     cover = models.ImageField(upload_to="covers", blank=False)
     audio = models.FileField(upload_to='audios', blank=False)
-    # song = models.FileField(upload_to=song_directory_path)
     created_at = models.DateTimeField(
         verbose_name='Created At', default=timezone.now)
+
+    class Meta:
+        ordering = ['title']
 
     def __str__(self):
         return self.title
@@ -67,3 +69,21 @@ class Song(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Song, self).save(*args, **kwargs)
+
+
+class Playlist(models.Model):
+    _id = M.ObjectIdField(primary_key=True)
+    title = models.CharField(max_length=255, verbose_name='Playlist name')
+    slug = models.SlugField(blank=False)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    song = models.ManyToManyField(Song)
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Playlist, self).save(*args, **kwargs)

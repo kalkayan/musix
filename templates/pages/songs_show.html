@@ -46,6 +46,7 @@
     </div>
     <!--end of container-->
 </section>
+<script src="{% static 'js/app/jquery-3.1.1.min.js' %}"></script>
 <script>
     // player
     var music = document.querySelector('.music-element')
@@ -90,6 +91,7 @@
     var favIcon = document.querySelector('.favorite')
     function handleFavorite() {
         favIcon.classList.toggle('active');
+        $.get( "/app/playlists/add/liked-songs/" + '{{song.slug}}');
     }
 
 
